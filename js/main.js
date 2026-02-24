@@ -18,6 +18,7 @@ function addProduct() {
     }
     productList.push(product);
     displayData();
+    clearForm();
 }
 
 function displayData() {
@@ -44,4 +45,13 @@ function displayData() {
                     </div>`;
     }
     rowData.innerHTML = cartona;
+}
+
+
+function clearForm(){
+    productNameInput.value = null;
+    productPriceInput.value = null;
+    productCategoryInput.value = null;
+    productDescriptionInput.value = null;
+    productImageInput.value = null;
 }
