@@ -10,6 +10,7 @@ var productList = [];
 
 if(localStorage.getItem("productContainer") !== null){
     productList = JSON.parse(localStorage.getItem("productContainer"));
+    displayData();
 }
 
 function addProduct() {
@@ -43,7 +44,7 @@ function displayData() {
                             </div>
 
                             <div class="card-footer text-center d-flex gap-2 justify-content-center">
-                                <button class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
+                                <button onclick="deleteProduct(${i})" class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
                                 <button class="btn btn-outline-warning"><i class="fas fa-edit"></i></button>
                             </div>
                         </div>
@@ -52,6 +53,12 @@ function displayData() {
     rowData.innerHTML = cartona;
 }
 
+
+function deleteProduct(index){
+    productList.splice(index, 1);
+    localStorage.setItem("productContainer", JSON.stringify(productList));
+    displayData();
+}
 
 function clearForm(){
     productNameInput.value = null;
