@@ -8,6 +8,10 @@ var rowData = document.getElementById("rowData");
 
 var productList = [];
 
+if(localStorage.getItem("productContainer") !== null){
+    productList = JSON.parse(localStorage.getItem("productContainer"));
+}
+
 function addProduct() {
     var product = {
         name: productNameInput.value,
@@ -17,6 +21,7 @@ function addProduct() {
         image: productImageInput.files[0] ? `images/${productImageInput.files[0].name}` : "images/1.jpg"
     }
     productList.push(product);
+    localStorage.setItem("productContainer", JSON.stringify(productList));
     displayData();
     clearForm();
 }
